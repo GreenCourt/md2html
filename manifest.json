@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "md2html",
+  "version": "0.1",
+  "description": "show markdown as html",
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*/*.md",
+        "file:///*.md"
+      ],
+      "js": [
+        "lib/katex/katex.min.js",
+        "lib/markdown-it.min.js",
+        "md2html.js"
+      ],
+      "css": [
+        "style.css"
+      ],
+      "run_at": "document_end"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "lib/katex/katex.min.css",
+        "lib/katex/fonts/*"
+      ],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
