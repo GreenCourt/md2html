@@ -6,7 +6,8 @@
   "content_scripts": [
     {
       "matches": [
-        "*://*/*.md",
+        "*://127.0.0.1/*.md",
+        "*://localhost/*.md",
         "file:///*.md"
       ],
       "js": [
