@@ -1,29 +1,23 @@
-body {
-  margin: 1em 2em;
-}
-
+body { margin: 1em 2em; }
 h1 { border-bottom: 1px solid silver; }
 h2 { border-bottom: 1px solid silver; }
 img { max-width: 100% }
 
 blockquote { /* > quoted sentence */
   border-left: 0.5em solid #aaa;
-  background: #dddddd;
+  background: #eee;
   padding: 0 0.5em;
   font-style: italic;
 }
 
 pre:has(code) { /* code block */
-  background-color:#dddddd;
+  background-color:#eee;
   padding:1em;
-  font-family: monospace;
 }
 
-p code { /* `inline code` */
-  background: #dddddd;
+code { /* `inline code` and code block */
+  background: #eee; 
   font-family: monospace;
-  padding: 0.2em 0.4em;
-  border-radius: 3px;
 }
 
 table { border-collapse: collapse; }
