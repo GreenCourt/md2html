@@ -1,0 +1,11 @@
+#!/bin/bash
+cd "$(dirname "${BASH_SOURCE}")"
+exec docker container run \
+--rm \
+ --userns=host -u $(id -u):$(id -g) -e HOME=/tmp \
+--net=host \
+--log-driver=none \
+--mount type=bind,src="$PWD",dst="$PWD" \
+-w "$PWD" \
+-e TERM \
+node:24 bash ./setup

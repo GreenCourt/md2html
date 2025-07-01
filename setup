@@ -1,0 +1,26 @@
+#!/bin/bash
+set -e
+cd "$(dirname "${BASH_SOURCE}")"
+mkdir -p lib
+
+cd lib
+if [ ! -f markdown-it.min.js ]
+then
+  curl -sSL https://cdn.jsdelivr.net/npm/markdown-it@14.1.0/dist/markdown-it.min.js -o markdown-it.min.js
+  expected="OMcKHnypGrQOLZ5uYBKYUacX7Rx9Ssu91Bv5UDeRz2g="
+  actual="$(openssl dgst -sha256 -binary markdown-it.min.js | openssl base64 -A)"
+  [ "$expected" == "$actual" ] || { rm -f markdown-it.min.js; echo integrity check failed; exit 1; }
+fi
+
+[ -d katex ] || curl -sSL https://github.com/KaTeX/KaTeX/releases/download/v0.16.22/katex.tar.gz | tar zxf -
+
+cd ../
+mkdir -p tmp
+cd tmp
+[ -f package.json ] || npm init -y
+npm install markdown-it @vscode/markdown-it-katex browserify
+npx browserify - -o ../lib/markdown-it-katex-browserify.js << 'EOF'
+(function(){
+  window.markdownitKatex = require('@vscode/markdown-it-katex').default;
+})();
+EOF

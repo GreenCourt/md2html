@@ -1,6 +1,7 @@
 (function() {
   if (!location.pathname.endsWith('.md')) return;
   const md = window.markdownit();
+  md.use(window.markdownitKatex);
 
   // clear styles inserted by browser
   document.head.innerHTML = '';

@@ -13,6 +13,7 @@
       "js": [
         "lib/katex/katex.min.js",
         "lib/markdown-it.min.js",
+        "lib/markdown-it-katex-browserify.js",
         "md2html.js"
       ],
       "css": [
