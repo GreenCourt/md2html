@@ -1,5 +1,6 @@
 (function() {
-  if(document.contentType != "text/markdown") return;
+  if(!(["text/plain", "text/markdown"].includes(document.contentType))) return;
+
   const md = window.markdownit();
   md.use(window.markdownitKatex);
 
