@@ -1,5 +1,5 @@
 (function() {
-  if (!location.pathname.endsWith('.md')) return;
+  if(document.contentType != "text/markdown") return;
   const md = window.markdownit();
   md.use(window.markdownitKatex);
 
